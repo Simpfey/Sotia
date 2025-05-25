@@ -71,7 +71,9 @@ client.on('messageCreate', async (message) => {
     }
 
     if (message.author.id === '1181171123493273601' && afk && message.content !== 'Mode AFK Enabled!') {
-        message.channel.send('Mode AFK Disabled!');
+        message.channel.send('Mode AFK Disabled!').then(repliedMessage => {
+            setTimeout(() => repliedMessage.delete(), 2000);
+        });
         afk = false;
     }
 
@@ -103,9 +105,13 @@ client.on('messageCreate', async (message) => {
     if (cmd === 'afk') {
         afk = !afk;
         if (afk) {
-            message.channel.send('Mode AFK Enabled!');
+            message.channel.send('Mode AFK Enabled!').then(repliedMessage => {
+                setTimeout(() => repliedMessage.delete(), 2000);
+            });
         } else {
-            message.channel.send('Mode AFK Disabled!');
+            message.channel.send('Mode AFK Disabled!').then(repliedMessage => {
+                setTimeout(() => repliedMessage.delete(), 2000);
+            });
         }
     }
 
